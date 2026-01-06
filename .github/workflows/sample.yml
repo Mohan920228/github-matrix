@@ -5,11 +5,11 @@ jobs:
   matrox:
     strategy:
       matrix:
-        image: [hello-world,httpd,nginx]
-        os: [ubunt-latest,ubuntu-20.02]
+        image: [hello-world,apache2,nginx]
+        os: [ubuntu-latest,ubuntu-20.02]
     runs-on: ${{matrix.os}}
     steps:
       - name: Echo Docker Images
         run: docker info
-      - name: Run image on ${{matrix.image}}
+      - name: Run image on ${{ matrix.image }}
         run: docker run ${{matrix.image}}
