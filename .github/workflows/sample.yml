@@ -8,7 +8,7 @@ jobs:
         os: [ubuntu-latest,windows-latest]
         image: [httpd:latest,nginx:latest]
       fail-fast: true
-    runs-on: $${{matrix.os}}
+    runs-on: ${{matrix.os}}
     steps:
       - name: checkout
         uses: actions/checkout@v4
