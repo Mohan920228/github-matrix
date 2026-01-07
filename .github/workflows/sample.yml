@@ -24,7 +24,10 @@ jobs:
          echo "Repository name is ${{ github.repository }}"
          echo "Triggered by ${{ github.actor }}"
          echo "Event type is ${{ github.event_name }}"
-         echo "Event type is ${{strategy.max-parallel}}"
+         echo "Event type is ${{strategy.job-index}}"
+         echo "Event type is ${{strategy.job-total}}"
+         echo "Event type is ${{strategy.fail-fast}}"
+         echo "Secret value is ${{secrets}}"
       - name: docker version
         run: docker info
       - name: docker pull and deploy on ${{matrix.image}}
