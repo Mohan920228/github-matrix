@@ -5,19 +5,16 @@ jobs:
   checkout:
     strategy:
       matrix:
-        os : [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest,windows-latest]
         image: [httpd:latest,nginx:latest]
-    runs-on: ubuntu-latest
+      fail-fast: true
+    runs-on: $${{matrix.os}}
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: check docker version
+      - name: docker version
         run: docker --version
-  docker-os:
-    runs-on: ${{matrix.os}}
-    steps:
-      - name : build and run on ${{matrix.os}}
-        run: |
-          docker run -d -t -p 80:80 ${{matrix.image}}
+      - name: docker pull and deploy on ${{matrix.image}}
+        run: docker run -d -t -p 80:80 ${{matrix.image}}
       
   
