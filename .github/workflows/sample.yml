@@ -1,15 +1,18 @@
-name: Matrix-workflow
+name: matrix-workflow
 on: push
-
 jobs:
-  matrox:
-    strategy:
-      matrix:
-        image: [hello-world,apache2,nginx]
-        os: [ubuntu-latest,ubuntu-20.02]
-    runs-on: ${{matrix.os}}
+  checkout:
+    runs-on: ubuntu-latest
     steps:
-      - name: Echo Docker Images
-        run: docker info
-      - name: Run image on ${{ matrix.image }}
-        run: docker run ${{matrix.image}}
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: check docker version
+        run: docker --version
+  docker-os:
+    runs-on: ubuntu-latest
+    steps:
+      - name : build and run
+        run: |
+          docker run -d -t -p 80:80 apache2:latest
+      
+  
