@@ -5,7 +5,7 @@ jobs:
   checkout:
     strategy:
       matrix:
-        os: [ubuntu-latest,windows-latest]
+        os: [ubuntu-latest,ubuntu-24.04]
         image: [httpd:latest,nginx:latest]
       fail-fast: true
     runs-on: ${{matrix.os}}
