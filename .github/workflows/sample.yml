@@ -27,7 +27,7 @@ jobs:
          echo "Event type is ${{strategy.job-index}}"
          echo "Event type is ${{strategy.job-total}}"
          echo "Event type is ${{strategy.fail-fast}}"
-         echo "Secret value is ${{secrets}}"
+         echo "Secret value is ${{secrets.GITHUB_TOKEN}}"
       - name: docker version
         run: docker info
       - name: docker pull and deploy on ${{matrix.image}}
