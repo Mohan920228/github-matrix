@@ -4,17 +4,22 @@ on: push
 jobs:
   checkout:
     strategy:
-      matrix:
-        os: [ubuntu-latest,ubuntu-24.04]
-        image: [httpd:latest,nginx:latest]
       fail-fast: true
+      max-parallel: 1
+      matrix:
+        os: [ubuntu-latest,ubuntu-24.04, windows-latest]
+        image: [httpd:latest,nginx:latest]
+        exclude:
+          - os: windows-latest
+            image: nginx:latest
+        include:
+          - os: amd64/alpine
+            image: ubuntu-24.04
     runs-on: ${{matrix.os}}
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: docker version
-        run: docker --version
+        run: docker info
       - name: docker pull and deploy on ${{matrix.image}}
         run: docker run -d -t -p 80:80 ${{matrix.image}}
-      
-  
