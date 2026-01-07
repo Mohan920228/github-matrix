@@ -24,6 +24,7 @@ jobs:
          echo "Repository name is ${{ github.repository }}"
          echo "Triggered by ${{ github.actor }}"
          echo "Event type is ${{ github.event_name }}"
+         echo "Event type is ${{strategy.max-parallel}}"
       - name: docker version
         run: docker info
       - name: docker pull and deploy on ${{matrix.image}}
