@@ -11,7 +11,9 @@ jobs:
         image: [httpd:latest,nginx:latest]
         exclude:
           - os: windows-latest
-            image: [httpd:latest,nginx:latest]
+            image: httpd:latest
+          - os: windows-latest
+            image: nginx:latest
     runs-on: ${{matrix.os}}
     steps: 
       - name: checkout
