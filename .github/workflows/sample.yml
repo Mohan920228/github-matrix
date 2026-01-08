@@ -12,9 +12,6 @@ jobs:
         exclude:
           - os: windows-latest
             image: [httpd:latest,nginx:latest]
-        include:
-          - os: amd64/alpine
-            image: ubuntu-24.04
     runs-on: ${{matrix.os}}
     steps:
       - name: checkout
@@ -22,7 +19,7 @@ jobs:
       - name: github context
         run: |
          echo "Repository name is $GITHUB_REF"
-         echo "Triggered by ${{ github.actor }}"
+         echo "Triggered by $GITHUB_TRIGGER"
          echo "Event type is ${{ github.event_name }}"
          echo "Event type is ${{strategy.job-index}}"
          echo "Event type is ${{strategy.job-total}}"
