@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
       - name: github context
         run: |
-         echo "Repository name is $GITHUB_REF"
+         echo "Repository name is ${{github}}"
          echo "Triggered by $GITHUB_TRIGGER"
          echo "Event type is ${{ github.event_name }}"
          echo "Event type is ${{strategy.job-index}}"
