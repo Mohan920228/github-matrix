@@ -1,4 +1,5 @@
 name: matrix-workflow
+run-name: matrixplay
 on: push
 
 jobs:
