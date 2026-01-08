@@ -13,7 +13,7 @@ jobs:
           - os: windows-latest
             image: [httpd:latest,nginx:latest]
     runs-on: ${{matrix.os}}
-    steps:
+    steps: 
       - name: checkout
         uses: actions/checkout@v4
       - name: github context
